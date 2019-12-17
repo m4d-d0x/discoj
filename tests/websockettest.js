@@ -8,12 +8,12 @@ client.on('connectFailed', function(error) {
  
 client.on('connect', function(connection) {
     connection.on('message', (data) => {
-        console.log(data)
+        console.log(JSON.parse(data.utf8Data))
     })
     connection.send(JSON.stringify({
         "op": 2,
         "d": {
-            "token": "NjU1NzY4MTA5NjEyNzkzODU2.Xfj5Fw.wmd6EwSCw2S20UBR017CYVxqctA",
+            "token": "NjU1NzY4MTA5NjEyNzkzODU2.Xfj8lQ.wgtKiFBa1oIbukUeq36Vr-EwLrg",
             "properties": {
                 "$os": "linux",
                 "$browser": "disco",
