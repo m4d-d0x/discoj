@@ -5,14 +5,22 @@ var client = new WebSocketClient();
 
 module.exports = (token, cb) => {
     var session_id = null
+    var heartbeat_interval = null
+
     client.on('connect', function(connection) {
         connection.on('message', (data) => {
-            data = JSON.parse(data.utf8Data)
-            if (data.t == 'READY') {
-                session_id = data.d.session_id
-                console.log(session_id)
+            
+            const parsedData = JSON.parse(data.utf8Data)
+            /*
+            console.log(parsedData)
+            */
+            if (parsedData.op == 0 && parsedData.t == "READY") { // dispatch
+                session_id = parsedData.d.session_id
             }
-            cb(data)
+            if (parsedData.op == 10) {
+                heartbeat_interval = parsedData.d.heartbeat_interval
+            }
+            cb(parsedData)
         })
         connection.send(JSON.stringify({
             "op": 2, // 2 = identify

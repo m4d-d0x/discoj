@@ -13,7 +13,7 @@ client.on('connect', function(connection) {
     connection.send(JSON.stringify({
         "op": 2,
         "d": {
-            "token": "NjU1NzY4MTA5NjEyNzkzODU2.XfY5sw.CXSncNGH48A0CcsTKJKzPvCJ7JQ",
+            "token": "NjU1NzY4MTA5NjEyNzkzODU2.Xfj5Fw.wmd6EwSCw2S20UBR017CYVxqctA",
             "properties": {
                 "$os": "linux",
                 "$browser": "disco",
