@@ -6,7 +6,7 @@ Async/Await, Lightweight, discord library
 ### To do list
 - [ ] Websockets
 	- [X] Connecting
-	- [ ] Resumes **IMPORTANT**
+	- [X] Resumes **IMPORTANT**
 	- [ ] Send presence updates
 	- [ ] Events
 		- [ ] Message

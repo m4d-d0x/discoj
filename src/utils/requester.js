@@ -2,7 +2,7 @@ var request = require('request');
 
 module.exports = (path, token, headers={}, placeholder, cb) => new Promise((resolve, reject) => {
 
-	if (placeholder.client.bot) token = "Bot " + token
+	if (true) token = "Bot " + token
 	var options = {url: 'https://discordapp.com/api/v6' + path, headers};
 	if (token) {
 		options.headers.authorization = token

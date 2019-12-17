@@ -15,7 +15,7 @@ module.exports = class Client extends events {
 
 		this.token = undefined
 		this.bot = true
-		this.connectedonce = true
+		this.connectedonce = false
 
 		this.getchannel = (id) => new Promise(async (resolve, reject) => {
 			let channel = await requester('/channels/' + id, this.token, {}, {client:this})

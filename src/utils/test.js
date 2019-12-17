@@ -1,7 +1,7 @@
 const Client = require('../client.js')
 
 async function main() {
-    var client = await (new Client().login(''))
+    var client = await (new Client().login('NjU1NzY4MTA5NjEyNzkzODU2.XfkQUQ.NyneH3aEBBE2Lw-bNrZV71Nd-7U'))
     client.on('ready', () => {
         console.log('Logged in as ' + client.me.username)
     })
