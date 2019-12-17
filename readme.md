@@ -18,4 +18,4 @@ Async/Await, Lightweight, discord library
 - [ ] Rich Embeds
 - [X] Better guilds store
 - [ ] Better member store
-- [ ] Better channel store
+- [X] Better channel store
