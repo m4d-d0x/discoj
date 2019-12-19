@@ -15,7 +15,7 @@ Async/Await, Lightweight, discord library
 			- [ ] Reactions
 				- [ ] Add reactions
 				- [ ] Remove reactions
-- [ ] Rich Embeds
+- [X] Rich Embeds
 - [X] Better guilds store
-- [ ] Better member store
+- [X] Better member store
 - [X] Better channel store
