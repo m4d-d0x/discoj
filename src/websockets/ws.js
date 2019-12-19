@@ -16,7 +16,6 @@ module.exports = (token, cb) => {
     client.on('connect', function(connection) {
 
         function connect() {
-            console.log('CONNECTING')
             connection.send(JSON.stringify({
                 "op": constants.GatewayOPCodes.IDENTIFY, // 2 = identify
                 "d": {
@@ -49,7 +48,7 @@ module.exports = (token, cb) => {
         connect()
 
         connection.on('close', () => { 
-            client.connect('wss://gateway.discord.gg')
+            client.connect(constants.Endpoints.WS)
             status = 'resuming'
         })
 
@@ -83,5 +82,5 @@ module.exports = (token, cb) => {
      
     
 
-    client.connect('wss://gateway.discord.gg/');
+    client.connect(constants.Endpoints.WS);
 }

@@ -15,3 +15,8 @@ module.exports.GatewayOPCodes = {
     SYNC_GUILD:        12,
     SYNC_CALL:         13
 };
+
+module.exports.Endpoints = {
+    HTTP: 'https://discordapp.com/api/v6',
+    WS: 'wss://gateway.discord.gg/'
+}

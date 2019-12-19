@@ -1,17 +1,31 @@
-const Client = require('../client.js')
+const discoj = require('../index')
+const client = new discoj.Client()
+const RichEmbed = discoj.RichEmbed
 
 async function main() {
-    var client = await (new Client().login('NjU1NzY4MTA5NjEyNzkzODU2.XfkVtQ.mskpdJZpkkY6Gledj-eJRnNpMds'))
     client.on('ready', () => {
         console.log('Logged in as ' + client.me.username)
-        console.log(client.channels)
     })
-    client.on('resume', () => {
-        console.log('Resuming...')
+    client.on('message', async (msg) => {
+        if (msg.content == "!serverinfo") {
+            
+            const guild = await msg.guild.fetch();
+            const owner = await client.getuser(guild.owner_id)
+            const members = guild.members
+
+            var embed = new RichEmbed()
+
+            console.log(embed)
+
+            embed.setTitle(guild.name)
+            embed.addField('Max Members Size', guild.max_members)
+            embed.addField('Owner', owner.tag)
+            embed.addField('Members Size', members.size)
+
+            msg.channel.send('📰 Server Info', embed)
+        } 
     })
-    client.on('message', (msg) => {
-        //console.log(msg)
-    })
+    await client.login('NjU1NzY4MTA5NjEyNzkzODU2.XfkYXA.q5BLxFYHlhs1tn5rGu_hNi6mHxg')
 }
 
 main()

@@ -32,10 +32,13 @@ module.exports = class Client extends events {
 		this.login = (token) => new Promise(async (resolve, reject) => {
 			this.token = token
 			this.me = await this.getuser('@me')
-			this.guilds = new GuildStore(await requester('/users/@me/guilds', this.token, {}, {client:this}))
+			this.guilds = new GuildStore(await requester('/users/@me/guilds', this.token, {}, {client:this}), this)
 			this.channels = new ChannelStore(this)
 			websockets(token, (message) => {
-				if (message == 'resume') return this.emit('resume')
+				if (message == 'resume') {
+					console.log('resume')
+					return this.emit('resume')
+				}
 				if (message.t == 'READY') {
 					if (!this.connectedonce) { 
 						this.emit('ready')
@@ -43,7 +46,7 @@ module.exports = class Client extends events {
 					}
 				}
 				if (message.t == 'MESSAGE_CREATE') {
-					this.emit('message', new messageClass(message.d))
+					this.emit('message', new messageClass(message.d, this))
 				}
 			})
 			resolve(this)

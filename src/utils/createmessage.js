@@ -1,19 +1,18 @@
 var request = require('request');
 const constants = require('../constants')
 
-module.exports = (path, token, headers={}, placeholder, cb) => new Promise((resolve, reject) => {
-
+module.exports = (token, data, channel) => new Promise((resolve, reject) => {
 	if (true) token = "Bot " + token
-	var options = {url: constants.Endpoints.HTTP + path, headers};
+	var options = {url: constants.Endpoints.HTTP + `/channels/${channel}/messages`, headers: {}, json:data};
 	if (token) {
 		options.headers.authorization = token
-	}
+    }
 	function requestcallback(error, response, body) {
+		console.log(body)
 		if (error) reject(error)
 		if (!error && response.statusCode == 200) {
-			resolve(JSON.parse(body))
+			resolve(body)
 		}
 	}
-	request(options, requestcallback)
-	
+	const res = request.post(options, requestcallback)
 })
