@@ -1,7 +1,13 @@
 const Store = require('../Store')
 const Member = require('../member')
 
-module.exports = class MemberStore extends Store {
+
+/**
+ * @class MemberStore
+ * @extends Store
+ * Stores a guild's members
+ */
+class MemberStore extends Store {
     constructor(apimembers, client) {
         super()
         apimembers.forEach(apimember => {
@@ -10,3 +16,5 @@ module.exports = class MemberStore extends Store {
         console.log(this)
     }
 }
+
+module.exports = MemberStore

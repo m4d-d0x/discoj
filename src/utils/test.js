@@ -2,6 +2,8 @@ const discoj = require('../index')
 const client = new discoj.Client()
 const RichEmbed = discoj.RichEmbed
 
+const testtoken = require('../../tests/token.js')
+
 async function main() {
     client.on('ready', () => {
         console.log('Logged in as ' + client.me.username)
@@ -9,23 +11,23 @@ async function main() {
     client.on('message', async (msg) => {
         if (msg.content == "!serverinfo") {
             
-            const guild = await msg.guild.fetch();
-            const owner = await client.getuser(guild.owner_id)
-            const members = guild.members
+            const {max_members,name,members} = await msg.guild.fetch();
+            const {tag} = await client.getuser(guild.owner_id)
 
             var embed = new RichEmbed()
 
             console.log(embed)
 
-            embed.setTitle(guild.name)
-            embed.addField('Max Members Size', guild.max_members)
-            embed.addField('Owner', owner.tag)
-            embed.addField('Members Size', members.size)
+            embed.setTitle(name)
+            embed.addField('Max Members Size', max_members)
+            embed.addField('Owner', tag)
+            embed.addField('Members Size', size)
+            embed.setFooter()
 
             msg.channel.send('📰 Server Info', embed)
         } 
     })
-    await client.login('NjU1NzY4MTA5NjEyNzkzODU2.XfkYXA.q5BLxFYHlhs1tn5rGu_hNi6mHxg')
+    await client.login(testtoken)
 }
 
 main()

@@ -1,7 +1,12 @@
 const Store = require('../Store')
 const Guild = require('../guild')
 
-module.exports = class GuildStore extends Store {
+/**
+ * Stores guilds
+ * @class GuildStore
+ * @extends Store
+ */
+class GuildStore extends Store {
     constructor(apiguilds, client) {
         super()
         apiguilds.forEach(apiguild => {
@@ -9,3 +14,5 @@ module.exports = class GuildStore extends Store {
         })
     }
 }
+
+module.exports = GuildStore

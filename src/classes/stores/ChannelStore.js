@@ -2,7 +2,12 @@ const Store = require('../Store')
 const Channel = require('../channel')
 const Requester = require('../../utils/requester')
 
-module.exports = class ChannelStore extends Store {
+/**
+ * Stores channels
+ * @class ChannelStore
+ * @extends Store
+ */
+class ChannelStore extends Store {
     constructor(client) {
         super()
         client.guilds.forEach(guild => {
@@ -14,3 +19,5 @@ module.exports = class ChannelStore extends Store {
         })
     }
 }
+
+module.exports = ChannelStore
