@@ -16,6 +16,13 @@ module.exports.GatewayOPCodes = {
     SYNC_CALL:         13
 };
 
+module.exports.StatusCodes = {
+    PLAYING: 0,
+    STREAMING: 1,
+    LISTENING: 2,
+    CUSTOM: 4
+}
+
 module.exports.Endpoints = {
     HTTP: 'https://discordapp.com/api/v6',
     WS: 'wss://gateway.discord.gg/'

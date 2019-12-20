@@ -7,7 +7,7 @@ var client = new WebSocketClient();
 var min/**Seconds to identify after resume */ = 1 
 var max/**Seconds to identify after resume */ = 5;
 
-module.exports = (token, cb) => {
+module.exports = (token, cb, connected) => {
     var session_id = null
     var seq_number = 0
 
@@ -40,7 +40,6 @@ module.exports = (token, cb) => {
                     "seq": seq_number
                 }
             }))
-            cb('resume')
             var rand = Math.floor(Math.random() * (max - min + 1) + min) // random between MIN and MAX
             setTimeout(connect, rand * 1000)
         }
@@ -62,6 +61,15 @@ module.exports = (token, cb) => {
                 if (parsedData.d.session_id) {
                     session_id = parsedData.d.session_id
                     status = "connected"
+                    connected(function setpresence(info) {
+                        console.log(info)
+                        connection.send(JSON.stringify({
+                            op: constants.GatewayOPCodes.STATUS_UPDATE,
+                            d: info,
+                            s: null,
+                            t: null
+                        }))
+                    })
                 }
                 if (status == 'resuming') resume()
             }

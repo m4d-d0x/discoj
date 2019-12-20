@@ -55,7 +55,24 @@ class Client extends events {
 		 */
 		this.channels = undefined
 		
+		/**
+		 * Current status of the bot
+		 */
+		this.status = {
+			"since": 91879201,
+			"game": {
+			  "name": "Made with discoj",
+			  "type": 0
+			},
+			"status": "online",
+			"afk": false
+		  }
 
+		/**
+		 * @returns {function}
+		 * @param {object} Status Status object
+		 */
+		this.setStatus = null
 
 	}
 
@@ -95,6 +112,8 @@ class Client extends events {
 				if (message.t == 'MESSAGE_CREATE') {
 					this.emit('message', new messageClass(message.d, this))
 				}
+			}, (setpresence) => {
+				this.setStatus = setpresence
 			})
 			resolve(this)
 		})

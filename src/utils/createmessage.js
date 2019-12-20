@@ -8,7 +8,9 @@ module.exports = (token, data, channel) => new Promise((resolve, reject) => {
 		options.headers.authorization = token
     }
 	function requestcallback(error, response, body) {
-		console.log(body)
+		if(body.message == "You are being rate limited.") {
+			return console.error('MESSAGE SEND RATE LIMIT EXCEEDED.')
+		}
 		if (error) reject(error)
 		if (!error && response.statusCode == 200) {
 			resolve(body)

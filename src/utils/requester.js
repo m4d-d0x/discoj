@@ -9,6 +9,9 @@ module.exports = (path, token, headers={}, placeholder, cb) => new Promise((reso
 		options.headers.authorization = token
 	}
 	function requestcallback(error, response, body) {
+		//console.log('LIMIT:         ' + response.headers['x-ratelimit-limit'])
+		//console.log('REMAINING:     ' + response.headers['x-ratelimit-remaining'])
+		//console.log('RESET AFTER:   ' + response.headers['x-ratelimit-reset-after'] + 's')
 		if (error) reject(error)
 		if (!error && response.statusCode == 200) {
 			resolve(JSON.parse(body))

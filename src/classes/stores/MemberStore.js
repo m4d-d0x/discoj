@@ -13,7 +13,6 @@ class MemberStore extends Store {
         apimembers.forEach(apimember => {
             this.set(apimember.user.id, new Member(apimember))
         })
-        console.log(this)
     }
 }
 
