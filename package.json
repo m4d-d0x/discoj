@@ -1,0 +1,26 @@
+{
+  "name": "discoj",
+  "version": "1.0.0",
+  "description": "Async/Await, Lightweight, discord library",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m4d-d0x/discoj.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/m4d-d0x/discoj/issues"
+  },
+  "homepage": "https://github.com/m4d-d0x/discoj#readme",
+  "dependencies": {
+    "request": "^2.88.0",
+    "websocket": "^1.0.31"
+  }
+}

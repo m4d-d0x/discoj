@@ -104,6 +104,7 @@ class Client extends events {
 					return this.emit('resume')
 				}
 				if (message.t == 'READY') {
+					this.setStatus(this.status)
 					if (!this.connectedonce) { 
 						this.emit('ready')
 						this.connectedonce = true
